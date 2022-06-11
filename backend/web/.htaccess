@@ -6,13 +6,5 @@ RewriteRule . index.php
 
 DirectoryIndex index.php
 
-# ...other settings...
-# Apache 2.4
-#Require all granted
-
-## Apache 2.2
- Order allow,deny
- Allow from all
-
-
-#php_value xdebug.client_host 10.0.4.9
+Order allow,deny
+Allow from all
