@@ -39,7 +39,15 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [],
+            'rules' => [
+                // News
+                'news' => 'news/index',
+                'news/<id:[0-9]+>' => 'news/view',
+
+                // Categories
+                'categories' => 'categories/index',
+                'categories/<id:[0-9]+>' => 'categories/view',
+            ],
         ],
     ],
     'params' => $params,

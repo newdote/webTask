@@ -37,29 +37,9 @@ docker-compose run --rm backend yii migrate
 ## Changelog
 
 1. Настройка ЧПУ.
-Раскомментировать в файлах `backend/config/main.php` и `frontend/config/main.php`
+
+2. Созданы миграция для задания.
 
 ```
-'urlManager' => [
-    'enablePrettyUrl' => true,
-    'showScriptName' => false,
-    'rules' => [],
-],
+docker-compose run --rm backend yii migrate/create news_init
 ```
-
-Создать файл `.htaccess` в `backend/web` и `frontend/web` с содержимым
-
-```
-RewriteEngine on
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . index.php
-
-DirectoryIndex index.php
-
-Order allow,deny
-Allow from all
-```
-
-2. 
