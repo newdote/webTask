@@ -18,8 +18,8 @@ return [
             ]
         ],
         'response' => [
-            'class' => 'yii\web\Response',
-            'format' => 'json',
+            'format' => yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -37,10 +37,9 @@ return [
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
             'enableStrictParsing' => false,
+            'showScriptName' => false,
             'rules' => [
-                // api
                 'class' => 'yii\rest\UrlRule',
                 'controller' => 'categories',
             ],
