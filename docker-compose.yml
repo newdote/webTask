@@ -24,11 +24,16 @@ services:
 
   mysql:
     image: mysql:5.7
+    restart: always
+    ports:
+      - 3306:80
+      - 33060:80
     environment:
       - MYSQL_ROOT_PASSWORD=verysecret
       - MYSQL_DATABASE=yii2advanced
       - MYSQL_USER=yii2advanced
       - MYSQL_PASSWORD=secret
+      - MYSQL_HOST=localhost
 
   phpmyadmin:
     image: phpmyadmin
