@@ -9,6 +9,8 @@ $params = array_merge(
 return [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'bootstrap' => ['log'],
     'controllerNamespace' => 'api\controllers',
     'components' => [
@@ -24,7 +26,7 @@ return [
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+            'identityCookie' => ['name' => '_identity-api', 'httpOnly' => true],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -37,11 +39,23 @@ return [
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'enableStrictParsing' => false,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                'class' => 'yii\rest\UrlRule',
-                'controller' => 'categories',
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'categories',
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'news',
+                    'only' => ['index', 'view', 'options']
+                ],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'users',
+                    'only' => ['index', 'view', 'options']
+                ],
             ],
         ],
     ],
