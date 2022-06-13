@@ -2,7 +2,7 @@
 
 namespace frontend\controllers;
 
-use frontend\models\Categories;
+use common\models\Categories;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

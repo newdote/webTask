@@ -2,7 +2,7 @@
 
 namespace frontend\controllers;
 
-use frontend\models\News;
+use common\models\News;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

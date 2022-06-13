@@ -9,7 +9,7 @@ use yii\rest\ActiveController;
  */
 class NewsController extends ActiveController
 {
-    public $modelClass = 'api\models\News';
+    public $modelClass = 'common\models\News';
 
     /**
      * {@inheritdoc}

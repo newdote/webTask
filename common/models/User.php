@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
@@ -72,7 +71,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        return static::findOne(['auth_key' => $token]);
     }
 
     /**
@@ -110,7 +109,8 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $token verify email token
      * @return static|null
      */
-    public static function findByVerificationToken($token) {
+    public static function findByVerificationToken($token)
+    {
         return static::findOne([
             'verification_token' => $token,
             'status' => self::STATUS_INACTIVE
@@ -209,5 +209,21 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'username',
+            'email',
+            'created_at' => function () {
+                return Yii::$app->formatter->asDatetime($this->created_at, 'dd.MM.yyyy HH:mm:ss');
+            },
+            'updated_at' => function () {
+                return Yii::$app->formatter->asDatetime($this->updated_at, 'dd.MM.yyyy HH:mm:ss');
+            },
+            'status',
+        ];
     }
 }

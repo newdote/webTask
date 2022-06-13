@@ -19,7 +19,7 @@ class UsersController extends ActiveController
         return $behaviors;
     }
 
-    public $modelClass = 'api\models\Users';
+    public $modelClass = 'common\models\User';
 
     /**
      * {@inheritdoc}

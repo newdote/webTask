@@ -24,7 +24,7 @@ return [
             'charset' => 'UTF-8',
         ],
         'user' => [
-            'identityClass' => 'api\models\Users',
+            'identityClass' => 'common\models\User',
             'enableSession' => false,
         ],
         'log' => [

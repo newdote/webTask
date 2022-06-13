@@ -1,35 +1,17 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
-use \yii\db\ActiveRecord;
+use yii\db\ActiveRecord;
 
-/**
- * This is the model class for table "news".
- *
- * @property int $id
- * @property int|null $category_id
- * @property string $slug
- * @property string $title
- * @property string $description
- * @property int $enabled
- *
- * @property Categories $category
- */
 class News extends ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
-        return 'news';
+        return '{{%news}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
@@ -42,9 +24,6 @@ class News extends ActiveRecord
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function attributeLabels()
     {
         return [
@@ -57,11 +36,6 @@ class News extends ActiveRecord
         ];
     }
 
-    /**
-     * Gets query for [[Category]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
     public function getCategory()
     {
         return $this->hasOne(Categories::class, ['id' => 'category_id']);

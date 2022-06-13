@@ -3,20 +3,14 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\News;
+use common\models\News;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-/**
- * NewsController implements the CRUD actions for News model.
- */
 class NewsController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
     public function behaviors()
     {
         return array_merge(
@@ -32,11 +26,6 @@ class NewsController extends Controller
         );
     }
 
-    /**
-     * Lists all News models.
-     *
-     * @return string
-     */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
@@ -58,12 +47,6 @@ class NewsController extends Controller
         ]);
     }
 
-    /**
-     * Displays a single News model.
-     * @param int $id ID
-     * @return string
-     * @throws NotFoundHttpException if the model cannot be found
-     */
     public function actionView($id)
     {
         return $this->render('view', [
@@ -71,11 +54,6 @@ class NewsController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new News model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return string|\yii\web\Response
-     */
     public function actionCreate()
     {
         $model = new News();

@@ -2,7 +2,8 @@
 
 namespace backend\controllers;
 
-use backend\models\Categories;
+use Yii;
+use common\models\Categories;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

@@ -9,5 +9,5 @@ use yii\rest\ActiveController;
  */
 class CategoriesController extends ActiveController
 {
-    public $modelClass = 'api\models\Categories';
+    public $modelClass = 'common\models\Categories';
 }
