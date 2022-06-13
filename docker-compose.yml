@@ -44,6 +44,7 @@ services:
       - MYSQL_USER=yii2advanced
       - MYSQL_PASSWORD=secret
       - MYSQL_HOST=localhost
+    command: --innodb_use_native_aio=0
 
   phpmyadmin:
     image: phpmyadmin
