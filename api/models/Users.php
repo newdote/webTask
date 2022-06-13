@@ -6,6 +6,7 @@ use Yii;
 use \yii\db\ActiveRecord;
 use \yii\helpers\Url;
 use yii\web\Linkable;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "Users".
@@ -17,7 +18,7 @@ use yii\web\Linkable;
  *
  * @property Users[] $Users
  */
-class Users extends ActiveRecord implements Linkable
+class Users extends ActiveRecord implements Linkable, IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -53,5 +54,30 @@ class Users extends ActiveRecord implements Linkable
         return [
             'self' => Url::to(['users/view', 'id' => $this->id], true),
         ];
+    }
+
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['auth_key' => $token]);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        return $this->authKey;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return $this->authKey === $authKey;
     }
 }
