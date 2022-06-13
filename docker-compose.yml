@@ -44,7 +44,9 @@ services:
       - MYSQL_USER=yii2advanced
       - MYSQL_PASSWORD=secret
       - MYSQL_HOST=localhost
-    command: --innodb-flush-method=littlesync --innodb-use-native-aio=OFF
+    command: "--innodb-flush-method=littlesync --innodb-use-native-aio=0"
+    volumes:
+      - ./db:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin
