@@ -2,16 +2,20 @@
 
 ## Установка при помощи docker-compose
 
-1. Установка зависимостей приложения
+1. Обновление и установка зависимостей приложения
+
+```
+docker-compose run --rm backend composer update
+```
 
 ```
 docker-compose run --rm backend composer install
 ```
 
-2. Инициализация приложения
+2. Инициализация приложения `--env=Development`
 
 ```
-docker-compose run --rm backend php /app/init
+docker-compose run --rm backend php /app/init --env=Development
 ```
 
 3. Редактирование конфигурации `common/config/main-local.php`
