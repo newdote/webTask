@@ -66,7 +66,15 @@ class NewsController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $news = News::find()->all();
+
+        if ($news === null) {
+            throw new NotFoundHttpException('Page not Found');
+        }
+
+        return $this->render('index', [
+            'news' => $news,
+        ]);
     }
 
     /**

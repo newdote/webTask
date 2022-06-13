@@ -66,7 +66,15 @@ class CategoriesController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories = Categories::find()->all();
+
+        if ($categories === null) {
+            throw new NotFoundHttpException('Page not Found');
+        }
+
+        return $this->render('index', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
